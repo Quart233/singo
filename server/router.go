@@ -39,6 +39,7 @@ func NewRouter() *gin.Engine {
 
 		v1.POST("videos", api.CreateVideo)
 		v1.GET("video/:id", api.ShowVideo)
+		v1.GET("videos", api.ListVideo)
 	}
 	return r
 }

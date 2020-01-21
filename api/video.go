@@ -26,3 +26,14 @@ func ShowVideo(c *gin.Context) {
 		c.JSON(200, ErrorResponse(err))
 	}
 }
+
+// ListVideo 视频列表
+func ListVideo(c *gin.Context) {
+	s := service.ListVideoService{}
+	if err := c.ShouldBind(&s); err == nil {
+		res := s.List()
+		c.JSON(200, res)
+	} else {
+		c.JSON(200, ErrorResponse(err))
+	}
+}
