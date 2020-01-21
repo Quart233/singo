@@ -15,3 +15,14 @@ func CreateVideo(c *gin.Context) {
 		c.JSON(200, ErrorResponse(err))
 	}
 }
+
+// ShowVideo 视频详情
+func ShowVideo(c *gin.Context) {
+	s := service.ShowVideoService{}
+	if err := c.ShouldBind(&s); err == nil {
+		res := s.Show(c.Param("id"))
+		c.JSON(200, res)
+	} else {
+		c.JSON(200, ErrorResponse(err))
+	}
+}
