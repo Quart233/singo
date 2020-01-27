@@ -37,3 +37,14 @@ func ListVideo(c *gin.Context) {
 		c.JSON(200, ErrorResponse(err))
 	}
 }
+
+// UpdateVideo 更新视频
+func UpdateVideo(c *gin.Context) {
+	s := service.UpdateVideoService{}
+	if err := c.ShouldBind(&s); err == nil {
+		res := s.Update(c.Param("id"))
+		c.JSON(200, res)
+	} else {
+		c.JSON(200, ErrorResponse(err))
+	}
+}
